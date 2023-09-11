@@ -17,5 +17,6 @@ public abstract class ExceptionsConstants {
     public static final String INSERT_ORDER_ERROR = "Error while performing insert userorder";
     public static final String UPDATE_ORDER_ERRR = "Error while updating userorder";
     public static final String DELETE_ORDER_ERROR = "Error while deleting userorder";
+    public static final String FILE_ERROR = "Error while reading file";
 
 }

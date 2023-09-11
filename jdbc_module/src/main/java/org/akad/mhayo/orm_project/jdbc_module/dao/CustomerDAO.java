@@ -3,6 +3,7 @@ package org.akad.mhayo.orm_project.jdbc_module.dao;
 import org.akad.mhayo.orm_project.jdbc_module.datasource.DataBaseConnection;
 import org.akad.mhayo.orm_project.jdbc_module.model.Customer;
 import org.akad.mhayo.orm_project.util.exceptions.CustomerException;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -14,6 +15,8 @@ import static org.akad.mhayo.orm_project.util.constants.ExceptionsConstants.*;
 
 @Component
 public class CustomerDAO {
+
+    Logger logger = org.slf4j.LoggerFactory.getLogger(CustomerDAO.class);
 
     public CustomerDAO(){
         //Standard constructor
@@ -29,9 +32,11 @@ public class CustomerDAO {
            try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_BY_ID)) {
                preparedStatement.setLong(1, id);
                resultSet = preparedStatement.executeQuery();
-           }
-           while(resultSet.next()){
-               customer = mapCustomer(resultSet);
+
+               while(resultSet.next()){
+                   customer = mapCustomer(resultSet);
+               }
+
            }
 
        } catch (SQLException e) {
@@ -51,12 +56,12 @@ public class CustomerDAO {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMERS)) {
 
                 resultSet = preparedStatement.executeQuery();
-            }
 
-            while(resultSet.next()){
+                while(resultSet.next()){
 
-                Customer customer = mapCustomer(resultSet);
-                customers.add(customer);
+                    Customer customer = mapCustomer(resultSet);
+                    customers.add(customer);
+                }
             }
 
                 return  customers;
@@ -83,7 +88,7 @@ public class CustomerDAO {
 
         try (Connection connection = DataBaseConnection.getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUSTOMER);
-            setCustomer(preparedStatement,customer);
+            updateCustomer(preparedStatement,customer);
 
         } catch (SQLException e) {
             throw new CustomerException(UPDATE_CUSTOMER_ERROR);
@@ -120,13 +125,31 @@ public class CustomerDAO {
             preparedStatement.setString(7,customer.getCity());
             preparedStatement.setString(8,customer.getStreet());
             preparedStatement.setInt(9,customer.getHousenumber());
-
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new CustomerException(INSERT_CUSTOMER_ERROR);
         }
 
 
+    }
+
+    public void updateCustomer(PreparedStatement preparedStatement,Customer customer) {
+
+        try {
+            preparedStatement.setString(1, customer.getUsername());
+            preparedStatement.setString(2, customer.getName());
+            preparedStatement.setString(3, customer.getSurname());
+            preparedStatement.setDate(4, customer.getBirthday());
+            preparedStatement.setString(5, customer.getCountry());
+            preparedStatement.setString(6, customer.getZipcode());
+            preparedStatement.setString(7, customer.getCity());
+            preparedStatement.setString(8, customer.getStreet());
+            preparedStatement.setInt(9, customer.getHousenumber());
+            preparedStatement.setLong(10, customer.getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new CustomerException(UPDATE_CUSTOMER_ERROR);
+        }
     }
 
 

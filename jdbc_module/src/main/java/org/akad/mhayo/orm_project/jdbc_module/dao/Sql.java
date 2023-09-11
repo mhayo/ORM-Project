@@ -57,7 +57,7 @@ public  class Sql {
 
     public static final String SELECT_ALL_CUSTOMERS = "SELECT * FROM CUSTOMER";
 
-    public static final String UPDATE_CUSTOMER = "UPDATE CUSTOMER SET USERNAME = ?, NAME = ?, SURNAME = ?, BIRTHDAY = ?, COUNTRY = ?, ZIPCODE = ?, CITY = ?, STREET = ?, HOUSENUMBER = ?";
+    public static final String UPDATE_CUSTOMER = "UPDATE CUSTOMER SET USERNAME = ?, NAME = ?, SURNAME = ?, BIRTHDAY = ?, COUNTRY = ?, ZIPCODE = ?, CITY = ?, STREET = ?, HOUSENUMBER = ? WHERE ID = ?";
 
     public static final String INSERT_CUSTOMER = "INSERT INTO CUSTOMER (username,name, surname, birthday, country, zipcode, city, street, housenumber) VALUES (?,?,?,?,?,?,?,?,?)";
 

@@ -1,6 +1,9 @@
 package org.akad.mhayo.orm_project.jdbc_module.datasource;
 
 import org.akad.mhayo.orm_project.jdbc_module.exception.DataBaseInitException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.*;
 import java.sql.*;
@@ -10,6 +13,9 @@ import java.util.List;
 public class InitDataBase {
 
     public InitDataBase(){/*standard constructor */}
+
+
+    private static Logger logger = LogManager.getLogger(InitDataBase.class);
 
 
     public static void dbInit(Connection connection) {
@@ -44,6 +50,7 @@ public class InitDataBase {
 
            try {
                try (PreparedStatement statement1 = connection.prepareStatement(s)) {
+                   logger.info("Current statement: " + s);
                    statement1.execute(s);
                }
            } catch (SQLException e) {

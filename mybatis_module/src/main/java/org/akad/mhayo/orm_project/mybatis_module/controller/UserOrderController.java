@@ -29,4 +29,12 @@ public class UserOrderController {
 
         return ResponseEntity.ok(order);
     }
+
+    @GetMapping("/order")
+    public ResponseEntity<Iterable<UserOrder>> getAllOrders(){
+
+        Iterable<UserOrder> orders = userOrderService.getAllOrders();
+
+        return ResponseEntity.ok(orders);
+    }
 }

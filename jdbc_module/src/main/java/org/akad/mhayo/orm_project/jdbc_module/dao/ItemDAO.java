@@ -34,13 +34,14 @@ public class ItemDAO {
             ResultSet resultSet;
             try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_ITEMS)) {
                 resultSet = preparedStatement.executeQuery();
+
+                while(resultSet.next()){
+
+                    items.add(mapItem(resultSet));
+
+                }
             }
 
-            while(resultSet.next()){
-
-                items.add(mapItem(resultSet));
-
-            }
 
             return items;
 
@@ -56,20 +57,24 @@ public class ItemDAO {
 
         try (Connection connection = DataBaseConnection.getConnection()) {
 
-            ResultSet resultSet;
+
             try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ITEM_BY_ID)) {
                 preparedStatement.setLong(1, id);
-                resultSet = preparedStatement.executeQuery();
+                ResultSet  resultSet = preparedStatement.executeQuery();
+
+                Item item = new Item();
+
+                while (resultSet.next()){
+
+                    item = mapItem(resultSet);
+                }
+
+                return item;
+
             }
 
-            Item item = new Item();
 
-            while (resultSet.next()){
 
-                item = mapItem(resultSet);
-            }
-
-            return item;
 
         } catch (SQLException e) {
             throw new ItemException(FETCHING_ITEM_ERROR);

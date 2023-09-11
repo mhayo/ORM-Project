@@ -14,7 +14,7 @@ public interface CustomerMapper
     @Select("SELECT * FROM CUSTOMER WHERE id = #{id}")
     Customer getCustomerById(long id);
 
-    @Insert("INSERT INTO CUSTOMER (username,name,surname,birthday,country,zipcode,city,street,housenumber) VALUES(#{name},#{surname},#{birthday},#{country},#{zipcode},#{city},#{street},#{housenumber})")
+    @Insert("INSERT INTO CUSTOMER (username,name,surname,birthday,country,zipcode,city,street,housenumber) VALUES(#{username},#{name},#{surname},#{birthday},#{country},#{zipcode},#{city},#{street},#{housenumber})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
     void insert(Customer customer);
 

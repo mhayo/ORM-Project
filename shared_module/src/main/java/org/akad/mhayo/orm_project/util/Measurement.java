@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 public  class Measurement {
 
     public static void writeToCsv(String framework,String query ,long elapsedTime){

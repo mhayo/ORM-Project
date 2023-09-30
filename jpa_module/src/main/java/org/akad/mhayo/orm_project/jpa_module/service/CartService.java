@@ -61,17 +61,18 @@ public class CartService {
         queryStart = System.currentTimeMillis();
         cartRepository.save(cart);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa","save_cart",queryEnd-queryStart);
+        Measurement.writeToCsv("jpa","saveCart",queryEnd-queryStart);
 
     }
 
     public void update(Cart cart){
 
+
             queryStart = System.currentTimeMillis();
             cartRepository.save(cart);
             queryEnd = System.currentTimeMillis();
 
-            Measurement.writeToCsv("jpa","update_cart",queryEnd-queryStart);
+            Measurement.writeToCsv("jpa","updateCart",queryEnd-queryStart);
 
     }
 
@@ -80,7 +81,7 @@ public class CartService {
         queryStart = System.currentTimeMillis();
         cartRepository.delete(cart);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa","delete_cart",queryEnd-queryStart);
+        Measurement.writeToCsv("jpa","deleteCart",queryEnd-queryStart);
 
     }
 

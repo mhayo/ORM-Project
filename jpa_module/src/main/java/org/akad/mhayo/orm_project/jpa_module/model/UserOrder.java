@@ -16,7 +16,7 @@ public class UserOrder {
     @ManyToOne
     private Customer customer;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Item> itemList;
 
     private double sum;

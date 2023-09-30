@@ -43,7 +43,7 @@ public class CartService {
         queryStart = System.currentTimeMillis();
         cartDAO.save(cart);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc","save_cart",queryEnd-queryStart);
+        Measurement.writeToCsv("jdbc","saveCart",queryEnd-queryStart);
 
     }
 
@@ -52,7 +52,7 @@ public class CartService {
         queryStart = System.currentTimeMillis();
         cartDAO.update(cart);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc","update_cart",queryEnd-queryStart);
+        Measurement.writeToCsv("jdbc","updateCart",queryEnd-queryStart);
 
     }
 
@@ -61,7 +61,7 @@ public class CartService {
         queryStart = System.currentTimeMillis();
         cartDAO.delete(cart);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc","delete_cart",queryEnd-queryStart);
+        Measurement.writeToCsv("jdbc","deleteCart",queryEnd-queryStart);
 
     }
 }

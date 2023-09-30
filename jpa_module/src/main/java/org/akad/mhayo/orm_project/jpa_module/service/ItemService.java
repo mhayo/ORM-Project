@@ -53,7 +53,7 @@ public class ItemService {
         queryStart = System.currentTimeMillis();
         itemRepository.save(item);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa", "save_item", queryEnd - queryStart);
+        Measurement.writeToCsv("jpa", "saveItem", queryEnd - queryStart);
 
 
     }
@@ -63,7 +63,7 @@ public class ItemService {
         queryStart = System.currentTimeMillis();
         itemRepository.save(item);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa", "update_item", queryEnd - queryStart);
+        Measurement.writeToCsv("jpa", "updateItem", queryEnd - queryStart);
 
 
     }
@@ -73,7 +73,7 @@ public class ItemService {
         queryStart = System.currentTimeMillis();
         itemRepository.delete(item);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa", "delete_item", queryEnd - queryStart);
+        Measurement.writeToCsv("jpa", "deleteItem", queryEnd - queryStart);
 
     }
 

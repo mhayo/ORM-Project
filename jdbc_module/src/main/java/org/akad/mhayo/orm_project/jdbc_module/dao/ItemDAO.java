@@ -103,7 +103,7 @@ public class ItemDAO {
         try (Connection connection = DataBaseConnection.getConnection()){
 
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ITEM);
-            setItem(preparedStatement,item);
+            updateItem(preparedStatement,item);
 
         } catch (SQLException e) {
             throw new ItemException(UPDATE_ITEM_ERROR);
@@ -154,6 +154,21 @@ public class ItemDAO {
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new ItemException(INSERT_ITEM_ERROR);
+        }
+
+    }
+
+    private void updateItem(PreparedStatement preparedStatement, Item item){
+
+        try {
+
+            preparedStatement.setString(1,item.getDescription());
+            preparedStatement.setDouble(2,item.getPrice());
+            preparedStatement.setLong(3,item.getId());
+
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new ItemException(UPDATE_ITEM_ERROR);
         }
 
     }

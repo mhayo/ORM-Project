@@ -29,7 +29,8 @@ public class CustomerDAO {
        
        try (Connection connection = DataBaseConnection.getConnection()){
            ResultSet resultSet;
-           try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_BY_ID)) {
+           try (PreparedStatement preparedStatement
+                        = connection.prepareStatement(SELECT_CUSTOMER_BY_ID)) {
                preparedStatement.setLong(1, id);
                resultSet = preparedStatement.executeQuery();
 
@@ -53,8 +54,8 @@ public class CustomerDAO {
 
         try (Connection connection = DataBaseConnection.getConnection()){
             ResultSet resultSet;
-            try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMERS)) {
-
+            try (PreparedStatement preparedStatement =
+                         connection.prepareStatement(SELECT_ALL_CUSTOMERS)) {
                 resultSet = preparedStatement.executeQuery();
 
                 while(resultSet.next()){
@@ -70,12 +71,11 @@ public class CustomerDAO {
         }
     }
 
-
     public void save(Customer customer){
 
         try (Connection connection = DataBaseConnection.getConnection()){
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMER);
-
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement(INSERT_CUSTOMER);
             setCustomer(preparedStatement,customer);
 
         } catch (SQLException e) {
@@ -87,7 +87,8 @@ public class CustomerDAO {
     public void update(Customer customer){
 
         try (Connection connection = DataBaseConnection.getConnection()){
-            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUSTOMER);
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement(UPDATE_CUSTOMER);
             updateCustomer(preparedStatement,customer);
 
         } catch (SQLException e) {
@@ -100,7 +101,8 @@ public class CustomerDAO {
     public void delete(Customer customer){
 
         try (Connection connection = DataBaseConnection.getConnection()){
-            try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER)) {
+            try (PreparedStatement preparedStatement =
+                         connection.prepareStatement(DELETE_CUSTOMER)) {
                 preparedStatement.setLong(1, customer.getId());
             }
 

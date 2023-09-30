@@ -69,21 +69,21 @@ public class UserOrderService {
         queryStart = System.currentTimeMillis();
         userOrderRepository.delete(userOrder);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa","update_userorder",queryEnd-queryStart);
+        Measurement.writeToCsv("jpa","delete_userorder",queryEnd-queryStart);
 
     }
 
     public UserOrder submit(long cartid){
 
-        queryStart = System.currentTimeMillis();
+
         Optional<Cart> cart = cartRepository.findById(cartid);
 
             if(cart.isPresent()){
                 UserOrder   userOrder = UserOrder.createFromCart(cart.get());
+                queryStart = System.currentTimeMillis();
                 userOrderRepository.save(userOrder);
-
-        queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa","submitOrder",queryEnd-queryStart);
+                 queryEnd = System.currentTimeMillis();
+                 Measurement.writeToCsv("jpa","saveOrder",queryEnd-queryStart);
 
         return userOrder;
 

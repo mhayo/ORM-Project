@@ -2,8 +2,6 @@ package org.akad.mhayo.orm_project.util;
 
 import org.akad.mhayo.orm_project.util.config.MeasurementConfig;
 import org.akad.mhayo.orm_project.util.exceptions.FileException;
-import org.springframework.beans.factory.annotation.Value;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,7 +11,7 @@ import java.util.logging.Logger;
 
 import static org.akad.mhayo.orm_project.util.constants.ExceptionsConstants.FILE_ERROR;
 
-public  class Measurement {
+public class Measurement {
 
    static Logger logger = Logger.getLogger(Measurement.class.getName());
 
@@ -42,7 +40,5 @@ public  class Measurement {
         } catch (IOException e) {
             throw new FileException(FILE_ERROR);
         }
-
     }
-
 }

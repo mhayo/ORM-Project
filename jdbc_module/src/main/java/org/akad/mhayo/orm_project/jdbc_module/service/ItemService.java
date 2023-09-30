@@ -44,7 +44,7 @@ public class ItemService {
         queryStart = System.currentTimeMillis();
         itemDAO.save(item);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc","save_item",queryEnd-queryStart);
+        Measurement.writeToCsv("jdbc","saveItem",queryEnd-queryStart);
 
     }
 
@@ -53,7 +53,7 @@ public class ItemService {
         queryStart = System.currentTimeMillis();
         itemDAO.update(item);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc","update_item",queryEnd-queryStart);
+        Measurement.writeToCsv("jdbc","updateItem",queryEnd-queryStart);
 
     }
 
@@ -62,7 +62,7 @@ public class ItemService {
         queryStart = System.currentTimeMillis();
         itemDAO.delete(id);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc","delete_item",queryEnd-queryStart);
+        Measurement.writeToCsv("jdbc","deleteItem",queryEnd-queryStart);
 
     }
 

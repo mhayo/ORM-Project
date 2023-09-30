@@ -15,7 +15,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.LAZY)
     private List<Item> items;
 
     @ManyToOne

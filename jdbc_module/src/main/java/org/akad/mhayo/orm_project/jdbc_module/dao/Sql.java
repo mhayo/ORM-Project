@@ -47,7 +47,7 @@ public  class Sql {
 
     public static final String INSERT_ITEM = "INSERT INTO ITEM (DESCRIPTION, PRICE) VALUES(?,?)";
 
-    public static final String UPDATE_ITEM = "UPDATE ITEM SET DESCRIPTION = ?, PRICE = ?";
+    public static final String UPDATE_ITEM = "UPDATE ITEM SET DESCRIPTION = ?, PRICE = ? WHERE ID = ?";
 
     public static final String DELETE_ITEM = "DELETE FROM ITEM WHERE ID = ?";
 

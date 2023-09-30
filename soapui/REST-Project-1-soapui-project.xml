@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="e7aade3d-fd20-41d4-b402-539f278d4be4" activeEnvironment="Default" name="REST Project 1" resourceRoot="" soapui-version="5.7.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:testSuite id="6810c52d-8e31-4d02-bdea-3a2800b87355" name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

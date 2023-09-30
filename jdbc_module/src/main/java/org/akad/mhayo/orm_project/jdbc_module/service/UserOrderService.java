@@ -72,12 +72,13 @@ public class UserOrderService {
 
     public UserOrder submit(long cartid) {
 
-        queryStart = System.currentTimeMillis();
+
         Cart cart = cartDAO.getCartById(cartid);
         UserOrder userOrder = UserOrder.createFromCart(cart);
+        queryStart = System.currentTimeMillis();
         userOrderDAO.save(userOrder);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc", "submitOrder", queryEnd - queryStart);
+        Measurement.writeToCsv("jdbc", "saveOrder", queryEnd - queryStart);
 
         return userOrder;
 

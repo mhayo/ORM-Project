@@ -29,7 +29,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         customerRepository.save(customer);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa","save_customer",queryEnd-queryStart);
+        Measurement.writeToCsv("jpa","saveCustomer",queryEnd-queryStart);
 
     }
 
@@ -63,7 +63,7 @@ public class CustomerService {
         }
 
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa","getCustomer",queryEnd-queryStart);
+        Measurement.writeToCsv("jpa","getCustomerById",queryEnd-queryStart);
 
         return customer;
     }
@@ -73,7 +73,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         customerRepository.save(customer);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa","update_customer",queryEnd-queryStart);
+        Measurement.writeToCsv("jpa","updateCustomer",queryEnd-queryStart);
 
 
     }
@@ -83,7 +83,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         customerRepository.delete(customer);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jpa","delete_customer",queryEnd-queryStart);
+        Measurement.writeToCsv("jpa","deleteCustomer",queryEnd-queryStart);
 
     }
 

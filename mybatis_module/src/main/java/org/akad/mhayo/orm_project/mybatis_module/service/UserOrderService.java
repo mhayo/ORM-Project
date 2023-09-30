@@ -67,19 +67,20 @@ public class UserOrderService {
         queryStart = System.currentTimeMillis();
         userOrderMapper.delete(userOrder.getId());
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("mybatis", "update_userorder", queryEnd - queryStart);
+        Measurement.writeToCsv("mybatis", "delete_userorder", queryEnd - queryStart);
 
     }
 
 
     public UserOrder submit(long cartid) {
 
-        queryStart = System.currentTimeMillis();
+
         Cart cart = cartMapper.getCartById(cartid);
         UserOrder userOrder = UserOrder.createFromCart(cart);
+        queryStart = System.currentTimeMillis();
         userOrderMapper.save(userOrder);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("mybatis", "submitOrder", queryEnd - queryStart);
+        Measurement.writeToCsv("mybatis", "saveOrder", queryEnd - queryStart);
 
         return userOrder;
 

@@ -43,7 +43,7 @@ public class CartController {
             IntStream.range(0, cartRequest.getQuantity()).forEach(i -> cart.addItem(item));
             cartService.update(cart);
 
-            return ResponseEntity.ok(convertEntityToDTO(cartService.getCartById(cartRequest.getCartid())));
+            return ResponseEntity.ok(convertEntityToDTO(cart));
 
         }catch (CartNotFoundException | ItemException notfound){
             ResponseEntity.notFound().build();

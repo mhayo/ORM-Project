@@ -1,0 +1,1110 @@
+{
+	"info": {
+		"_postman_id": "e7f52d79-f5e2-46e5-8068-96918a26a36d",
+		"name": "ORM-Test-Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30159216"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "item",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "get Item By Id",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var randomId = Math.floor(Math.random() * 50) + 1;",
+													"",
+													"pm.environment.set(\"randomId\", randomId);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/item/{{randomId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"item",
+												"{{randomId}}"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "get Item By Id",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/item/{{randomId}}",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"item",
+														"{{randomId}}"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								},
+								{
+									"name": "delete Item",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/item/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"item",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<long>"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "get All Items",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/item",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"item"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/item",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"item"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "update Item",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var uniqueId = Math.floor(Math.random() * 1000000);",
+											"",
+											"var descriptions = ['Item A', 'Item B', 'Item C', 'Item D'];",
+											"var randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];",
+											"",
+											"var randomPrice = (Math.random() * 100).toFixed(2);",
+											"",
+											"//pm.environment.set(\"uniqueId\", uniqueId);",
+											"pm.environment.set(\"randomDescription\", randomDescription);",
+											"pm.environment.set(\"randomPrice\", randomPrice);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n      \"id\": \"1\",\n  \"description\": \"{{randomDescription}}\",\n  \"price\": \"{{randomPrice}}\"\n}\n",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/item",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"item"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update Item",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n      \"id\": \"1\",\n  \"description\": \"{{randomDescription}}\",\n  \"price\": \"{{randomPrice}}\"\n}\n",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/item",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"item"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "save Item",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//var uniqueId = Math.floor(Math.random() * 1000000);",
+											"",
+											"var descriptions = ['Item A', 'Item B', 'Item C', 'Item D'];",
+											"var randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];",
+											"",
+											"var randomPrice = (Math.random() * 100).toFixed(2);",
+											"",
+											"//pm.environment.set(\"uniqueId\", uniqueId);",
+											"pm.environment.set(\"randomDescription\", randomDescription);",
+											"pm.environment.set(\"randomPrice\", randomPrice);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"description\": \"{{randomDescription}}\",\n  \"price\": \"{{randomPrice}}\"\n}\n\n\n",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/item",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"item"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "save Item",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"description\": \"{{randomDescription}}\",\n  \"price\": \"{{randomPrice}}\"\n}\n\n\n",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/item",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"item"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "customer",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "get Customer By Id",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var randomId = Math.floor(Math.random() * 50) + 1;",
+													"",
+													"pm.environment.set(\"randomId\", randomId);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/customer/{{randomId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer",
+												"{{randomId}}"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "get Customer By Id",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/customer/{{randomId}}",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"customer",
+														"{{randomId}}"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get Customers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/customer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"customer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get Customers",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "update Customer",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function generateUUID() {",
+											"    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+											"        var r = Math.random() * 16 | 0,",
+											"            v = c == 'x' ? r : (r & 0x3 | 0x8);",
+											"        return v.toString(16);",
+											"    });",
+											"}",
+											"",
+											"var randomId = Math.floor(Math.random() * 50) + 1;",
+											"",
+											"var randomUsername = generateUUID();",
+											"",
+											"var randomName = \"Name\" + Math.floor(Math.random() * 1000);",
+											"var randomSurname = \"Surname\" + Math.floor(Math.random() * 1000);",
+											"var randomCountry = \"Country\" + Math.floor(Math.random() * 1000);",
+											"var randomZipcode = Math.floor(Math.random() * 100000).toString();",
+											"var randomCity = \"City\" + Math.floor(Math.random() * 1000);",
+											"var randomStreet = \"Street\" + Math.floor(Math.random() * 1000);",
+											"var randomHousenumber = Math.floor(Math.random() * 100);",
+											"",
+											"var randomBirthday = Math.floor(Math.random() * (2002-1940) + 1940) + \"-\" + ",
+											"                     (\"0\" + (Math.floor(Math.random() * 12) + 1)).slice(-2) + \"-\" + ",
+											"                     (\"0\" + (Math.floor(Math.random() * 28) + 1)).slice(-2);",
+											"",
+											"pm.environment.set(\"randomId\", randomId);",
+											"pm.environment.set(\"randomUsername\", randomUsername);",
+											"pm.environment.set(\"randomName\", randomName);",
+											"pm.environment.set(\"randomSurname\", randomSurname);",
+											"pm.environment.set(\"randomBirthday\", randomBirthday);",
+											"pm.environment.set(\"randomCountry\", randomCountry);",
+											"pm.environment.set(\"randomZipcode\", randomZipcode);",
+											"pm.environment.set(\"randomCity\", randomCity);",
+											"pm.environment.set(\"randomStreet\", randomStreet);",
+											"pm.environment.set(\"randomHousenumber\", randomHousenumber);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"{{randomId}}\",\n  \"username\": \"{{randomUsername}}\",\n  \"name\": \"{{randomName}}\",\n  \"surname\": \"{{randomSurname}}\",\n  \"birthday\": \"{{randomBirthday}}\",\n  \"country\": \"{{randomCountry}}\",\n  \"zipcode\": \"{{randomZipcode}}\",\n  \"city\": \"{{randomCity}}\",\n  \"street\": \"{{randomStreet}}\",\n  \"housenumber\": \"{{randomHousenumber}}\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/customer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"customer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update Customer",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"{{randomId}}\",\n  \"username\": \"{{randomUsername}}\",\n  \"name\": \"{{randomName}}\",\n  \"surname\": \"{{randomSurname}}\",\n  \"birthday\": \"{{randomBirthday}}\",\n  \"country\": \"{{randomCountry}}\",\n  \"zipcode\": \"{{randomZipcode}}\",\n  \"city\": \"{{randomCity}}\",\n  \"street\": \"{{randomStreet}}\",\n  \"housenumber\": \"{{randomHousenumber}}\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "save Customer",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function generateUUID() {",
+											"    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+											"        var r = Math.random() * 16 | 0,",
+											"            v = c == 'x' ? r : (r & 0x3 | 0x8);",
+											"        return v.toString(16);",
+											"    });",
+											"}",
+											"",
+											"var randomUsername = generateUUID();",
+											"",
+											"var randomName = \"Name\" + Math.floor(Math.random() * 1000);",
+											"var randomSurname = \"Surname\" + Math.floor(Math.random() * 1000);",
+											"var randomCountry = \"Country\" + Math.floor(Math.random() * 1000);",
+											"var randomZipcode = Math.floor(Math.random() * 100000).toString();",
+											"var randomCity = \"City\" + Math.floor(Math.random() * 1000);",
+											"var randomStreet = \"Street\" + Math.floor(Math.random() * 1000);",
+											"var randomHousenumber = Math.floor(Math.random() * 100);",
+											"",
+											"var randomBirthday = Math.floor(Math.random() * (2002-1940) + 1940) + \"-\" + ",
+											"                     (\"0\" + (Math.floor(Math.random() * 12) + 1)).slice(-2) + \"-\" + ",
+											"                     (\"0\" + (Math.floor(Math.random() * 28) + 1)).slice(-2);",
+											"",
+											"pm.environment.set(\"randomUsername\", randomUsername);",
+											"pm.environment.set(\"randomName\", randomName);",
+											"pm.environment.set(\"randomSurname\", randomSurname);",
+											"pm.environment.set(\"randomBirthday\", randomBirthday);",
+											"pm.environment.set(\"randomCountry\", randomCountry);",
+											"pm.environment.set(\"randomZipcode\", randomZipcode);",
+											"pm.environment.set(\"randomCity\", randomCity);",
+											"pm.environment.set(\"randomStreet\", randomStreet);",
+											"pm.environment.set(\"randomHousenumber\", randomHousenumber);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"{{randomUsername}}\",\n  \"name\": \"{{randomName}}\",\n  \"surname\": \"{{randomSurname}}\",\n  \"birthday\": \"{{randomBirthday}}\",\n  \"country\": \"{{randomCountry}}\",\n  \"zipcode\": \"{{randomZipcode}}\",\n  \"city\": \"{{randomCity}}\",\n  \"street\": \"{{randomStreet}}\",\n  \"housenumber\": \"{{randomHousenumber}}\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/customer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"customer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "save Customer",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"{{randomUsername}}\",\n  \"name\": \"{{randomName}}\",\n  \"surname\": \"{{randomSurname}}\",\n  \"birthday\": \"{{randomBirthday}}\",\n  \"country\": \"{{randomCountry}}\",\n  \"zipcode\": \"{{randomZipcode}}\",\n  \"city\": \"{{randomCity}}\",\n  \"street\": \"{{randomStreet}}\",\n  \"housenumber\": \"{{randomHousenumber}}\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "submit",
+					"item": [
+						{
+							"name": "{cartid}",
+							"item": [
+								{
+									"name": "submit",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var randomId = Math.floor(Math.random() * 5) + 1;",
+													"",
+													"pm.environment.set(\"randomId\", randomId);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/submit/{{randomId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"submit",
+												"{{randomId}}"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "submit",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/submit/{{randomId}}",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"submit",
+														"{{randomId}}"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "addToCart",
+					"item": [
+						{
+							"name": "add To Cart",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// list of sample usernames stored in database",
+											"var usernames = [",
+											"    \"SophiaJohnson\",",
+											"    \"JacksonSmith\",",
+											"    \"OliviaGarcia\",",
+											"    \"LiamRodriguez\",",
+											"    \"EmmaMartinez\",",
+											"    \"OliverLopez\",",
+											"    \"AvaBrown\",",
+											"    \"NoahSmith\",",
+											"    \"SophiaLopez\",",
+											"    \"OliviaGarcia2\"",
+											"];",
+											"",
+											"var randomUsername = usernames[Math.floor(Math.random() * usernames.length)];",
+											"",
+											"var randomCartId = Math.floor(Math.random() * 5) + 1;",
+											"",
+											"var randomItemId = Math.floor(Math.random() * 5) + 1;",
+											"",
+											"var randomQuantity = Math.floor(Math.random() * 10) + 1;",
+											"",
+											"pm.environment.set(\"randomUsername\", randomUsername);",
+											"pm.environment.set(\"randomCartId\", randomCartId);",
+											"pm.environment.set(\"randomItemId\", randomItemId);",
+											"pm.environment.set(\"randomQuantity\", randomQuantity);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"{{randomUsername}}\",\n  \"cartid\": \"{{randomCartId}}\",\n  \"itemid\": \"{{randomItemId}}\",\n  \"quantity\": \"{{randomQuantity}}\"\n}\n",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/addToCart",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"addToCart"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "add To Cart",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"{{randomUsername}}\",\n  \"cartid\": \"{{randomCartId}}\",\n  \"itemid\": \"{{randomItemId}}\",\n  \"quantity\": \"{{randomQuantity}}\"\n}\n",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/addToCart",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"addToCart"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "order",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "get Order By Id",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var randomId = Math.floor(Math.random() * 5) + 1;",
+													"",
+													"pm.environment.set(\"randomId\", randomId);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/order/{{randomId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"order",
+												"{{randomId}}"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "get Order By Id",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/order/{{randomId}}",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"order",
+														"{{randomId}}"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get All Orders",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/order",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"order"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"customer\": {\n      \"id\": \"<long>\",\n      \"username\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"birthday\": \"<dateTime>\",\n      \"country\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"street\": \"<string>\",\n      \"housenumber\": \"<integer>\"\n    },\n    \"itemList\": [\n      {\n        \"id\": \"<long>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\"\n      }\n    ],\n    \"sum\": \"<double>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"customer\": {\n      \"id\": \"<long>\",\n      \"username\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"birthday\": \"<dateTime>\",\n      \"country\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"street\": \"<string>\",\n      \"housenumber\": \"<integer>\"\n    },\n    \"itemList\": [\n      {\n        \"id\": \"<long>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\"\n      }\n    ],\n    \"sum\": \"<double>\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "cart",
+					"item": [
+						{
+							"name": "get All Carts",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/cart",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"cart"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get All Carts",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/cart",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"cart"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.globals.get(\"variable_key\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8083"
+		}
+	]
+}

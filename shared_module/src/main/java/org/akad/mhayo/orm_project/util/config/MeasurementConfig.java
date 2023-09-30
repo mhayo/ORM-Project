@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MeasurementConfig {
 
-   // private static String csvPath;
 
     private static String csvDir;
 
@@ -28,15 +27,4 @@ public class MeasurementConfig {
         return csvFile;
     }
 
-
-
-/*
-    @Value("${measurement.csv.path}")
-    public void setCsvPath(String path) {
-        MeasurementConfig.csvPath = path;
-    }
-
-    public static String getCsvPath() {
-        return csvPath;
-    }*/
 }

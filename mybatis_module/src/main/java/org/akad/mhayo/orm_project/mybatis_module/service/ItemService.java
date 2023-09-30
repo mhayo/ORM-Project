@@ -42,7 +42,7 @@ public class ItemService {
         queryStart = System.currentTimeMillis();
         itemMapper.insert(item);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("mybatis","save_item",queryEnd-queryStart);
+        Measurement.writeToCsv("mybatis","saveItem",queryEnd-queryStart);
 
     }
 
@@ -51,7 +51,7 @@ public class ItemService {
         queryStart = System.currentTimeMillis();
         itemMapper.updateItem(item);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("mybatis","update_item",queryEnd-queryStart);
+        Measurement.writeToCsv("mybatis","updateItem",queryEnd-queryStart);
 
     }
 
@@ -60,7 +60,7 @@ public class ItemService {
         queryStart = System.currentTimeMillis();
         itemMapper.deleteItem(id);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("mybatis","delete_item",queryEnd-queryStart);
+        Measurement.writeToCsv("mybatis","deleteItem",queryEnd-queryStart);
 
     }
 

@@ -25,7 +25,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         customerMapper.insert(customer);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("mybatis","save_customer",queryEnd-queryStart);
+        Measurement.writeToCsv("mybatis","saveCustomer",queryEnd-queryStart);
 
 
     }
@@ -46,7 +46,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         Customer temp =  customerMapper.getCustomerById(id);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("mybatis","getCustomer",queryEnd-queryStart);
+        Measurement.writeToCsv("mybatis","getCustomerById",queryEnd-queryStart);
         return temp;
     }
 
@@ -55,7 +55,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         customerMapper.update(customer);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("mybatis","update_customer",queryEnd-queryStart);
+        Measurement.writeToCsv("mybatis","updateCustomer",queryEnd-queryStart);
 
 
     }
@@ -65,7 +65,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         customerMapper.delete(id);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("mybatis","delete_customer",queryEnd-queryStart);
+        Measurement.writeToCsv("mybatis","deleteCustomer",queryEnd-queryStart);
 
     }
 

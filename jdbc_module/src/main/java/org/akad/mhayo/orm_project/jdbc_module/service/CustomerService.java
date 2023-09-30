@@ -44,7 +44,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         customerDAO.save(customer);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc","save_customer",queryEnd-queryStart);
+        Measurement.writeToCsv("jdbc","saveCustomer",queryEnd-queryStart);
 
     }
 
@@ -53,7 +53,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         customerDAO.update(customer);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc","update_customer",queryEnd-queryStart);
+        Measurement.writeToCsv("jdbc","updateCustomer",queryEnd-queryStart);
 
     }
 
@@ -62,7 +62,7 @@ public class CustomerService {
         queryStart = System.currentTimeMillis();
         customerDAO.update(customer);
         queryEnd = System.currentTimeMillis();
-        Measurement.writeToCsv("jdbc","delete_customer",queryEnd-queryStart);
+        Measurement.writeToCsv("jdbc","deleteCustomer",queryEnd-queryStart);
 
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class UserOrder {
+public class UserOrderDTO {
 
     private long id;
 

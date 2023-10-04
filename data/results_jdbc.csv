@@ -1598,3 +1598,4 @@ jdbc;updateCart;1
 jdbc;getOrderById;3
 jdbc;getAllOrders;1
 jdbc;getAllCarts;2
+jdbc;getItemById;9
